@@ -62,13 +62,26 @@ function display(data, status) {
 			row.appendChild(document.createElement('td'));
 			row.appendChild(document.createElement('td'));
 			row.appendChild(document.createElement('td'));
-
+			row.appendChild(document.createElement('td'));
+			
 			row.cells[0].appendChild(document
 					.createTextNode(eventsList[i].created_at));
-			row.cells[1].appendChild(document
-					.createTextNode(eventsList[i].pusher_type));
-			row.cells[2].appendChild(document
-					.createTextNode(eventsList[i].description));
+			if(eventsList[i].type === 'PushEvent'){
+				row.cells[1].appendChild(document
+						.createTextNode(eventsList[i].committedBy));
+				row.cells[2].appendChild(document
+						.createTextNode(eventsList[i].committedTo));
+				row.cells[3].appendChild(document
+						.createTextNode(eventsList[i].commitMessage));
+			}else{
+				row.cells[1].appendChild(document
+						.createTextNode(eventsList[i].pusher_type));
+				row.cells[2].appendChild(document
+						.createTextNode(eventsList[i].ref_type));
+				row.cells[3].appendChild(document
+						.createTextNode(eventsList[i].description));
+			}
+			
 
 			tablearea.appendChild(row);
 		}

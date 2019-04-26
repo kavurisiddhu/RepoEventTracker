@@ -9,6 +9,7 @@ public class PayLoad {
 	private String master_branch;
 	private String description;
 	private String pusher_type;
+	private Commits[] commits;
 	/**
 	 * @return the ref
 	 */
@@ -69,10 +70,23 @@ public class PayLoad {
 	public void setPusher_type(String pusher_type) {
 		this.pusher_type = pusher_type;
 	}
+	
+	/**
+	 * @return the commits
+	 */
+	public Commits[] getCommits() {
+		return commits;
+	}
+	/**
+	 * @param commits the commits to set
+	 */
+	public void setCommits(Commits[] commits) {
+		this.commits = commits;
+	}
 	@Override
 	public String toString() {
 		return "PayLoad [ref=" + ref + ", ref_type=" + ref_type + ", master_branch=" + master_branch + ", description="
-				+ description + ", pusher_type=" + pusher_type + "]";
+				+ description + ", pusher_type=" + pusher_type + ", commits=" + commits + "]";
 	}
 	
 	

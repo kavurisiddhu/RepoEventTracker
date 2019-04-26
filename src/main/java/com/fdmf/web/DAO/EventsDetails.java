@@ -20,6 +20,14 @@ public class EventsDetails {
 	private String description;
 	@JsonView(ReturnAsJson.Public.class)
 	private String pusher_type;
+	@JsonView(ReturnAsJson.Public.class)
+	private String committedTo;
+	@JsonView(ReturnAsJson.Public.class)
+	private String commitMessage;
+	@JsonView(ReturnAsJson.Public.class)
+	private String committedBy;
+	@JsonView(ReturnAsJson.Public.class)
+	private String ref_type;
 	/**
 	 * @return the id
 	 */
@@ -104,11 +112,63 @@ public class EventsDetails {
 	public void setPusher_type(String pusher_type) {
 		this.pusher_type = pusher_type;
 	}
+	/**
+	 * @return the committedTo
+	 */
+	public String getCommittedTo() {
+		return committedTo;
+	}
+	/**
+	 * @param committedTo the committedTo to set
+	 */
+	public void setCommittedTo(String committedTo) {
+		this.committedTo = committedTo;
+	}
+	/**
+	 * @return the commitMessage
+	 */
+	public String getCommitMessage() {
+		return commitMessage;
+	}
+	/**
+	 * @param commitMessage the commitMessage to set
+	 */
+	public void setCommitMessage(String commitMessage) {
+		this.commitMessage = commitMessage;
+	}
+	
+	
+	/**
+	 * @return the committedBy
+	 */
+	public String getCommittedBy() {
+		return committedBy;
+	}
+	/**
+	 * @param committedBy the committedBy to set
+	 */
+	public void setCommittedBy(String committedBy) {
+		this.committedBy = committedBy;
+	}
+	/**
+	 * @return the ref_type
+	 */
+	public String getRef_type() {
+		return ref_type;
+	}
+	/**
+	 * @param ref_type the ref_type to set
+	 */
+	public void setRef_type(String ref_type) {
+		this.ref_type = ref_type;
+	}
+	
 	@Override
 	public String toString() {
 		return "EventsDetails [id=" + id + ", type=" + type + ", created_at=" + created_at + ", user_display_login="
 				+ user_display_login + ", master_branch=" + master_branch + ", description=" + description
-				+ ", pusher_type=" + pusher_type + "]";
+				+ ", pusher_type=" + pusher_type + ", committedTo=" + committedTo + ", commitMessage=" + commitMessage
+				+ ", committedBy=" + committedBy + ", ref_type=" + ref_type + "]";
 	}
 	
 	
