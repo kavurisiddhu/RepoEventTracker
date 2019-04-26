@@ -1,5 +1,8 @@
-package com.fdmf.eventtracker.DAO;
+package com.fdmf.web.DAO;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties( ignoreUnknown = true )
 public class Repository {
     private String id;
     private String url;

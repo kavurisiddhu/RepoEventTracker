@@ -1,4 +1,4 @@
-package com.fdmf.eventtracker.DAO;
+package com.fdmf.web.DAO;
 
 public class GetEventsListReq extends BaseRequest {
     private String user;

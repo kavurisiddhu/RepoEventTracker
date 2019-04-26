@@ -1,4 +1,4 @@
-package com.fdmf.eventtracker.utils;
+package com.fdmf.web.utils;
 
 public class Constants {
 

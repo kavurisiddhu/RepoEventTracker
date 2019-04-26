@@ -1,14 +1,18 @@
-package com.fdmf.eventtracker.DAO;
+package com.fdmf.web.DAO;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties( ignoreUnknown = true )
 public class Event {
+	
     private String id;
     private String type;
     private boolean accessType;
     private Date created_at;
-    private User actor;
     private Repository repo;
+    private PayLoad payload;
 
     /**
      * @return the id
@@ -67,20 +71,6 @@ public class Event {
     }
 
     /**
-     * @return the actor
-     */
-    public User getUser() {
-        return actor;
-    }
-
-    /**
-     * @param actor the actor to set
-     */
-    public void setUser(User actor) {
-        this.actor = actor;
-    }
-
-    /**
      * @return the repo
      */
     public Repository getRepo() {
@@ -93,12 +83,27 @@ public class Event {
     public void setRepo(Repository repo) {
         this.repo = repo;
     }
+    
+    
+    /**
+	 * @return the payload
+	 */
+	public PayLoad getPayload() {
+		return payload;
+	}
 
-    @Override
-    public String toString() {
-        return "Event [id=" + id + ", type=" + type + ", accessType=" + accessType + ", created_at=" + created_at
-                + ", user=" + actor + ", repo=" + repo + "]";
-    }
+	/**
+	 * @param payload the payload to set
+	 */
+	public void setPayload(PayLoad payload) {
+		this.payload = payload;
+	}
+
+	@Override
+	public String toString() {
+		return "Event [id=" + id + ", type=" + type + ", accessType=" + accessType + ", created_at=" + created_at+
+				 ", repo=" + repo + ", payload=" + payload + "]";
+	}
 
 
 }

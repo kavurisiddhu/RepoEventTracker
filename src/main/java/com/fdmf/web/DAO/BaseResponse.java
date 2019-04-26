@@ -1,4 +1,4 @@
-package com.fdmf.eventtracker.DAO;
+package com.fdmf.web.DAO;
 
 public class BaseResponse {
     private String errorCode;

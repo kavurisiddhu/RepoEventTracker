@@ -1,7 +1,10 @@
-package com.fdmf.eventtracker.DAO;
+package com.fdmf.web.DAO;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties( ignoreUnknown = true )
 public class User {
-
+	
     private String id;
     private String login;
     private String display_login;

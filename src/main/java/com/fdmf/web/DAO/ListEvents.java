@@ -1,8 +1,9 @@
-package com.fdmf.eventtracker.DAO;
+package com.fdmf.web.DAO;
 
 import java.util.List;
 
 public class ListEvents extends BaseResponse {
+	
     public List<Event> eventsLst;
 
     /**
