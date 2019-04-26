@@ -22,7 +22,7 @@ public class HomeController {
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
 
-		return "hello";
+		return "home";
 
 	}
 
@@ -37,9 +37,6 @@ public class HomeController {
 		ListEvents lstEvents=gitHubClient.getEventList(getEventsListReq);
 		TransformUtils transformUtils=new TransformUtils();
 		eventsListResponse=transformUtils.convertWebToUIEventsList(lstEvents);
-		for(EventsDetails event: eventsListResponse.getEventDetails()) {
-			System.out.println(event.toString());
-		}
 		
 		return eventsListResponse;
 	}
