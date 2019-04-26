@@ -5,11 +5,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.fdmf.web.DAO.Event;
 import com.fdmf.web.DAO.EventsDetails;
 import com.fdmf.web.DAO.EventsListResponse;
+import com.fdmf.web.DAO.GetEventsListReq;
 import com.fdmf.web.DAO.ListEvents;
 
+@Service
 public class TransformUtils {
 	public EventsListResponse convertWebToUIEventsList(ListEvents lstEvents){
 		List<EventsDetails> eventsDetailsList=null;
@@ -30,4 +34,16 @@ public class TransformUtils {
 		eventsListResponse.setEventDetails(eventsDetailsList);
 		return eventsListResponse;
 	}
+	
+	 public String buildURL(GetEventsListReq getEventsListReq){
+	        StringBuilder sb=new StringBuilder();
+	        sb.append(Constants.BASE_URL);
+	        sb.append(getEventsListReq.getUser());
+	        sb.append("/");
+	        sb.append(getEventsListReq.getRepo());
+	        sb.append("/");
+	        sb.append(Constants.EVENTS);
+
+	        return sb.toString();
+	    }
 }

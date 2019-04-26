@@ -1,7 +1,9 @@
 package com.fdmf.web.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +14,17 @@ import com.fdmf.web.DAO.EventsDetails;
 import com.fdmf.web.DAO.EventsListResponse;
 import com.fdmf.web.DAO.GetEventsListReq;
 import com.fdmf.web.DAO.ListEvents;
-import com.fdmf.web.utils.GitHubClient;
+import com.fdmf.web.services.GetEventService;
 import com.fdmf.web.utils.TransformUtils;
 
 @Controller
 public class HomeController {
 	
+	@Autowired
+	GetEventService getEventService;
+	
+	@Autowired
+	TransformUtils transformUtils;
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
@@ -30,14 +37,16 @@ public class HomeController {
 	@RequestMapping(value="/ajax/getEventsList", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public  EventsListResponse getEventsList(@RequestBody GetEventsListReq getEventsListReq){
-		EventsListResponse eventsListResponse;
-		System.out.println("Request json is ");
-		System.out.println(getEventsListReq.toString());
-		GitHubClient gitHubClient=new GitHubClient();
-		ListEvents lstEvents=gitHubClient.getEventList(getEventsListReq);
-		TransformUtils transformUtils=new TransformUtils();
+		EventsListResponse eventsListResponse=null;
+		try {
+		ListEvents lstEvents=getEventService.getEventList(getEventsListReq);
 		eventsListResponse=transformUtils.convertWebToUIEventsList(lstEvents);
-		
+		for(EventsDetails event: eventsListResponse.getEventDetails()) {
+			System.out.println(event.toString());
+		}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		return eventsListResponse;
 	}
 
