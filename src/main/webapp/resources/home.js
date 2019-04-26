@@ -52,20 +52,26 @@ function enableSearchButton(flag) {
 }
 
 function display(data, status) {
-	var eventsList=data.eventDetails;
-	var tablearea = document.getElementById('eventsTable');
+	if(data.errorCode){
+		window.alert('No records found for user and repository combination. Please try again')
+	}else{
+		var eventsList=data.eventDetails;
+		var tablearea = document.getElementById('eventsTable');
+		for (var i = 0; i < eventsList.length; i++) {
+			var row = document.createElement('tr');
+			row.appendChild(document.createElement('td'));
+			row.appendChild(document.createElement('td'));
+			row.appendChild(document.createElement('td'));
 
-	for(var i=0;i<eventsList.length;i++){
-		var row = document.createElement('tr');
-	    row.appendChild( document.createElement('td') );
-	    row.appendChild( document.createElement('td') );
-	    row.appendChild( document.createElement('td') );
-	    
-	    row.cells[0].appendChild( document.createTextNode(eventsList[i].created_at) );
-	    row.cells[1].appendChild( document.createTextNode(eventsList[i].pusher_type) );
-	    row.cells[2].appendChild( document.createTextNode(eventsList[i].description) );
-	    
-	    tablearea.appendChild(row);
+			row.cells[0].appendChild(document
+					.createTextNode(eventsList[i].created_at));
+			row.cells[1].appendChild(document
+					.createTextNode(eventsList[i].pusher_type));
+			row.cells[2].appendChild(document
+					.createTextNode(eventsList[i].description));
+
+			tablearea.appendChild(row);
+		}
 	}
 }
 

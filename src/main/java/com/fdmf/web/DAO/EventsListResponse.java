@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-public class EventsListResponse {
+public class EventsListResponse extends BaseResponse{
 	@JsonView(ReturnAsJson.Public.class)
 	public List<EventsDetails> eventDetails;
 

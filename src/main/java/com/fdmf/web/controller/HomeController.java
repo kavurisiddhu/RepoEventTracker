@@ -21,10 +21,10 @@ import com.fdmf.web.utils.TransformUtils;
 public class HomeController {
 	
 	@Autowired
-	GetEventService getEventService;
+	private GetEventService getEventService;
 	
 	@Autowired
-	TransformUtils transformUtils;
+	private TransformUtils transformUtils;
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
