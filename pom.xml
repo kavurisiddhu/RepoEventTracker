@@ -8,8 +8,8 @@
 	<name>Repo Events Viewer</name>
 
 	<properties>
-		<jdk.version>1.6</jdk.version>
-		<spring.version>3.2.13.RELEASE</spring.version>
+		<jdk.version>1.8</jdk.version>
+		<spring.version>4.3.23.RELEASE</spring.version>
 		<jstl.version>1.2</jstl.version>
 	</properties>
 
@@ -76,6 +76,16 @@
 		<artifactId>javax.servlet-api</artifactId>
 		<version>3.0.1</version>
 		<scope>provided</scope>
+	</dependency>
+	<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpcore</artifactId>
+    <version>4.4.10</version>
+	</dependency>
+	<dependency>
+    	<groupId>org.apache.httpcomponents</groupId>
+    	<artifactId>httpclient</artifactId>
+    	<version>4.3.6</version>
 	</dependency>
 	</dependencies>
 
